@@ -1,12 +1,15 @@
-
 import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
+import ThreeBackground from './ThreeBackground';
 
 const Hero = () => {
   return (
     <div className="relative bg-gradient-to-r from-ksdm-navy to-blue-900 text-white min-h-screen flex items-center">
-      {/* Overlay Pattern */}
-      <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+CjxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgZmlsbD0iI2ZmZiI+PC9yZWN0Pgo8cGF0aCBkPSJNMzYgMTBhNiA2IDAgMCAxIDEyIDBBNiA2IDAgMCAxIDYwIDEwQTYgNiAwIDAgMSA0OCAyMmE2IDYgMCAwIDEgLTEyIDBBNiA2IDAgMCAxIDI0IDEwQTYgNiAwIDAgMSAzNiAyMiIgZmlsbD0iIzAwMCI+PC9wYXRoPgo8L3N2Zz4=')]"></div>
+      {/* 3D Background */}
+      <ThreeBackground />
+      
+      {/* Overlay Pattern - keeping this for additional texture */}
+      <div className="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+CjxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgZmlsbD0iI2ZmZiI+PC9yZWN0Pgo8cGF0aCBkPSJNMzYgMTBhNiA2IDAgMCAxIDEyIDBBNiA2IDAgMCAxIDYwIDEwQTYgNiAwIDAgMSA0OCAyMmE2IDYgMCAwIDEgLTEyIDBBNiA2IDAgMCAxIDI0IDEwQTYgNiAwIDAgMSAzNiAyMiIgZmlsbD0iIzAwMCI+PC9wYXRoPgo8L3N2Zz4=')]"></div>
 
       <div className="container mx-auto px-4 py-20 pt-32 md:py-24 md:pt-40 z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
