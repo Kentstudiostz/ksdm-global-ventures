@@ -50,12 +50,12 @@ const Footer = () => {
           </div>
           
           <div>
-            <h4 className="font-semibold text-lg mb-4">Legal</h4>
+            <h4 className="font-semibold text-lg mb-4">Contact Information</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-300 hover:text-white">Privacy Policy</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white">Terms of Service</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white">Investment Disclaimer</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white">Regulatory Information</a></li>
+              <li className="text-gray-300">inquiry@ksdmllc.com</li>
+              <li className="text-gray-300">+255 764 738 005</li>
+              <li className="text-gray-300">US: Lexington, Kentucky</li>
+              <li className="text-gray-300">TZ: Dar es Salaam, Tanzania</li>
             </ul>
           </div>
         </div>

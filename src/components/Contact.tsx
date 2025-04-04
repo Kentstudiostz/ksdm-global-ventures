@@ -54,7 +54,7 @@ const Contact = () => {
               <Mail className="h-6 w-6 text-white" />
             </div>
             <h3 className="text-lg font-semibold mb-2">Email Us</h3>
-            <p className="text-gray-700">info@ksdmllc.com</p>
+            <p className="text-gray-700">inquiry@ksdmllc.com</p>
             <p className="text-gray-700">investments@ksdmllc.com</p>
           </div>
 
@@ -63,8 +63,8 @@ const Contact = () => {
               <Phone className="h-6 w-6 text-white" />
             </div>
             <h3 className="text-lg font-semibold mb-2">Call Us</h3>
-            <p className="text-gray-700">+1 (555) 123-4567</p>
-            <p className="text-gray-700">+255 (0) 123-456-789</p>
+            <p className="text-gray-700">+255 764 738 005</p>
+            <p className="text-gray-700">+255 762 771 000</p>
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-md text-center">
@@ -72,8 +72,8 @@ const Contact = () => {
               <Building className="h-6 w-6 text-white" />
             </div>
             <h3 className="text-lg font-semibold mb-2">Visit Us</h3>
-            <p className="text-gray-700">New York, USA</p>
-            <p className="text-gray-700">Dar es Salaam, Tanzania</p>
+            <p className="text-gray-700">271 W. Short St Ste 410 #1598, Lexington, Kentucky 40507</p>
+            <p className="text-gray-700">12 Kids Joy Mivumoni 14130, Dar es Salaam, Tanzania</p>
           </div>
         </div>
 
