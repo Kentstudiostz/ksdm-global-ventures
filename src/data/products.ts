@@ -6,8 +6,8 @@ export const products = [
     id: 'c1',
     name: 'Identity Oversized Tee',
     price: 79.99,
-    description: 'The Identity Oversized Tee isn't just a shirt—it's a statement of your authentic self. Cut with a relaxed silhouette that gives you room to express yourself, this premium cotton tee features our signature subtle embroidery that captures attention without demanding it.',
-    statement: 'When you wear the Identity Tee, you don't blend in—you stand out through deliberate understatement.',
+    description: 'The Identity Oversized Tee isn\'t just a shirt—it\'s a statement of your authentic self. Cut with a relaxed silhouette that gives you room to express yourself, this premium cotton tee features our signature subtle embroidery that captures attention without demanding it.',
+    statement: 'When you wear the Identity Tee, you don\'t blend in—you stand out through deliberate understatement.',
     image: 'https://images.unsplash.com/photo-1581092795360-fd1ca04f0952',
     gallery: [
       'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a',
