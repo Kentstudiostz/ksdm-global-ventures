@@ -36,7 +36,7 @@ export const products = [
     price: 249.99,
     salePrice: 189.99,
     description: 'The Presence Bomber commands attention without saying a word. Meticulously crafted from weather-resistant technical fabric with a satin finish, this jacket features our minimalist design philosophy while maximizing functionality with hidden pockets and ventilation.',
-    statement: 'The Presence Bomber doesn't announce your arrival—it makes your departure memorable.',
+    statement: 'The Presence Bomber doesn\'t announce your arrival—it makes your departure memorable.',
     image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea',
     gallery: [
       'https://images.unsplash.com/photo-1548126032-079a0fb0099d',
@@ -64,7 +64,7 @@ export const products = [
     name: 'Essence Tailored Shirt',
     price: 139.99,
     description: 'The Essence Tailored Shirt redefines business attire for those who understand that true power lies in subtle distinction. Cut from Italian cotton with a structured yet comfortable fit, this shirt features a unique collar construction that frames your face in a way that demands focus.',
-    statement: 'Wearing the Essence Shirt signals a confidence that doesn't need validation—it already knows its worth.',
+    statement: 'Wearing the Essence Shirt signals a confidence that doesn\'t need validation—it already knows its worth.',
     image: 'https://images.unsplash.com/photo-1598032895397-b9472444bf93',
     gallery: [
       'https://images.unsplash.com/photo-1607345366928-199ea26cfe3e',
@@ -91,7 +91,7 @@ export const products = [
     name: 'Perception Trousers',
     price: 169.99,
     description: 'The Perception Trousers alter how you move through the world—and how the world perceives your movement. Tailored with a tapered silhouette that elongates your frame, these trousers feature our proprietary fabric blend that maintains structure while allowing freedom.',
-    statement: 'These aren't just pants—they're a foundation of presence that elevates your entire silhouette.',
+    statement: 'These aren\'t just pants—they\'re a foundation of presence that elevates your entire silhouette.',
     image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246',
     gallery: [
       'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80',
@@ -119,8 +119,8 @@ export const products = [
     name: 'Distinction Dress',
     price: 219.99,
     salePrice: 179.99,
-    description: 'The Distinction Dress doesn't follow trends—it creates moments. Cut from fluid Japanese silk that responds to your movement with subtle luminosity, this dress features an asymmetrical hemline and minimal seam construction that lets the fabric—and your presence—speak volumes.',
-    statement: 'This dress doesn't just accentuate your figure—it announces your intention to be remembered.',
+    description: 'The Distinction Dress doesn\'t follow trends—it creates moments. Cut from fluid Japanese silk that responds to your movement with subtle luminosity, this dress features an asymmetrical hemline and minimal seam construction that lets the fabric—and your presence—speak volumes.',
+    statement: 'This dress doesn\'t just accentuate your figure—it announces your intention to be remembered.',
     image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8',
     gallery: [
       'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1',
@@ -147,8 +147,8 @@ export const products = [
     id: 'c6',
     name: 'Awareness Hoodie',
     price: 149.99,
-    description: 'The Awareness Hoodie is engineered for those who understand that comfort and presence aren't mutually exclusive. Crafted from our heavyweight organic cotton with a brushed interior, this hoodie features subtle architectural details that elevate it beyond casual wear.',
-    statement: 'This isn't loungewear—it's a deliberate choice to combine comfort with unmistakable identity.',
+    description: 'The Awareness Hoodie is engineered for those who understand that comfort and presence aren\'t mutually exclusive. Crafted from our heavyweight organic cotton with a brushed interior, this hoodie features subtle architectural details that elevate it beyond casual wear.',
+    statement: 'This isn\'t loungewear—it\'s a deliberate choice to combine comfort with unmistakable identity.',
     image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7',
     gallery: [
       'https://images.unsplash.com/photo-1565693413579-8ff3fdc1b03b',
@@ -178,7 +178,7 @@ export const products = [
     price: 89.99,
     salePrice: 59.99,
     description: 'The Awareness Silk Scarf is a whisper that speaks volumes. Hand-printed on Italian silk using our exclusive pattern, this accessory drapes with intention and catches light in ways that draw attention to your presence without demanding it.',
-    statement: 'This scarf doesn't merely accent an outfit—it transforms your silhouette into a deliberate statement.',
+    statement: 'This scarf doesn\'t merely accent an outfit—it transforms your silhouette into a deliberate statement.',
     image: 'https://images.unsplash.com/photo-1521319894908-a27537e2e4f1',
     gallery: [
       'https://images.unsplash.com/photo-1583744946564-b52ac1c389c8',
@@ -206,7 +206,7 @@ export const products = [
     name: 'Distinction Watch',
     price: 329.99,
     description: 'The Distinction Watch operates at the intersection of timepiece and identity statement. Featuring a Swiss movement housed in a minimalist case, this watch tells more than time—it communicates a deliberate approach to life where every second is noticed.',
-    statement: 'This watch doesn't just mark time—it marks you as someone who values the weight of each moment.',
+    statement: 'This watch doesn\'t just mark time—it marks you as someone who values the weight of each moment.',
     image: 'https://images.unsplash.com/photo-1524805444758-089113d48a6d',
     gallery: [
       'https://images.unsplash.com/photo-1636653410512-5f66daf69879',
@@ -231,8 +231,8 @@ export const products = [
     id: 'a3',
     name: 'Identity Tote',
     price: 179.99,
-    description: 'The Identity Tote doesn't merely carry your essentials—it carries your presence. Crafted from vegetable-tanned leather that develops a unique patina with use, this tote features architectural proportions that stand out among conventional bags.',
-    statement: 'This isn't just storage—it's a declaration that what you carry matters and deserves a worthy vessel.',
+    description: 'The Identity Tote doesn\'t merely carry your essentials—it carries your presence. Crafted from vegetable-tanned leather that develops a unique patina with use, this tote features architectural proportions that stand out among conventional bags.',
+    statement: 'This isn\'t just storage—it\'s a declaration that what you carry matters and deserves a worthy vessel.',
     image: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7',
     gallery: [
       'https://images.unsplash.com/photo-1601369850205-4bdc9c0b2738',
@@ -258,8 +258,8 @@ export const products = [
     id: 'a4',
     name: 'Presence Sunglasses',
     price: 219.99,
-    description: 'The Presence Sunglasses don't simply shield your eyes—they frame your face in a way that demands attention. Handcrafted from Italian acetate with polarized lenses, these sunglasses feature subtle architectural details that distinguish them from conventional eyewear.',
-    statement: 'These aren't just sunglasses—they're the threshold through which you observe the world, and it observes you.',
+    description: 'The Presence Sunglasses don\'t simply shield your eyes—they frame your face in a way that demands attention. Handcrafted from Italian acetate with polarized lenses, these sunglasses feature subtle architectural details that distinguish them from conventional eyewear.',
+    statement: 'These aren\'t just sunglasses—they\'re the threshold through which you observe the world, and it observes you.',
     image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083',
     gallery: [
       'https://images.unsplash.com/photo-1577803645773-f96470509666',
@@ -286,7 +286,7 @@ export const products = [
     price: 129.99,
     salePrice: 99.99,
     description: 'The Essence Bracelet is a subtle yet unmistakable statement of identity. Handcrafted from solid sterling silver with our proprietary clasp mechanism, this bracelet sits at the perfect tension on your wrist—visible without being ostentatious.',
-    statement: 'This bracelet doesn't just adorn—it becomes an extension of your identity, a tactile reminder of your presence.',
+    statement: 'This bracelet doesn\'t just adorn—it becomes an extension of your identity, a tactile reminder of your presence.',
     image: 'https://images.unsplash.com/photo-1611652022419-a9419f74343d',
     gallery: [
       'https://images.unsplash.com/photo-1573408301185-9146fe634ad0',
@@ -313,7 +313,7 @@ export const products = [
     name: 'Distinction Cap',
     price: 89.99,
     description: 'The Distinction Cap elevates casual headwear to a deliberate style choice. Crafted from premium cotton with an architectural brim and our minimal embroidery, this cap offers subtle recognition among those who value understatement.',
-    statement: 'This isn't just a hat—it's a refined finish to any look, signaling awareness without shouting for attention.',
+    statement: 'This isn\'t just a hat—it\'s a refined finish to any look, signaling awareness without shouting for attention.',
     image: 'https://images.unsplash.com/photo-1521369909029-2afed882baee',
     gallery: [
       'https://images.unsplash.com/photo-1556306535-0f09a537f0a3',
