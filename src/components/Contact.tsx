@@ -42,9 +42,10 @@ const Contact = () => {
     <section id="contact" className="section-padding bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-ksdm-navy">Contact Us</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-ksdm-navy">Get in Touch</h2>
           <p className="text-lg text-gray-700">
-            Reach out to discuss investment opportunities, partnerships, or to learn more about our ventures.
+            Questions about our clothing, accessories, or brand philosophy? 
+            We're here to help you discover your unique identity through KSDM.
           </p>
         </div>
 
@@ -55,7 +56,6 @@ const Contact = () => {
             </div>
             <h3 className="text-lg font-semibold mb-2">Email Us</h3>
             <p className="text-gray-700">inquiry@ksdmllc.com</p>
-            <p className="text-gray-700">investments@ksdmllc.com</p>
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-md text-center">
@@ -149,31 +149,32 @@ const Contact = () => {
             </div>
             
             <div className="gradient-bg p-6 md:p-10 text-white flex flex-col justify-center">
-              <h3 className="text-2xl font-semibold mb-6">Investment Inquiries</h3>
+              <h3 className="text-2xl font-semibold mb-6">Style Consultations</h3>
               
               <div className="space-y-6">
                 <p>
-                  Looking to invest or partner with KSDM LLC? Our team is ready to discuss opportunities across our portfolio.
+                  Looking for personalized style advice from KSDM? Book a consultation 
+                  with our experts to discover pieces that amplify your identity.
                 </p>
                 
                 <div>
-                  <h4 className="font-semibold mb-2">Investment Minimums:</h4>
+                  <h4 className="font-semibold mb-2">Our Services:</h4>
                   <ul className="space-y-2">
                     <li className="flex items-center">
                       <div className="h-1.5 w-1.5 rounded-full bg-ksdm-gold mr-2"></div>
-                      <span>Real Estate Projects: $50,000</span>
+                      <span>Personal Style Analysis</span>
                     </li>
                     <li className="flex items-center">
                       <div className="h-1.5 w-1.5 rounded-full bg-ksdm-gold mr-2"></div>
-                      <span>Tourism Ventures: $25,000</span>
+                      <span>Wardrobe Curation</span>
                     </li>
                     <li className="flex items-center">
                       <div className="h-1.5 w-1.5 rounded-full bg-ksdm-gold mr-2"></div>
-                      <span>Technology Startups: $15,000</span>
+                      <span>Color Coordination</span>
                     </li>
                     <li className="flex items-center">
                       <div className="h-1.5 w-1.5 rounded-full bg-ksdm-gold mr-2"></div>
-                      <span>Managed Fund: $100,000</span>
+                      <span>Special Event Styling</span>
                     </li>
                   </ul>
                 </div>
@@ -181,7 +182,7 @@ const Contact = () => {
                 <Button 
                   className="bg-ksdm-gold text-ksdm-navy hover:bg-yellow-400"
                 >
-                  Schedule Investment Consultation
+                  Book a Consultation
                 </Button>
               </div>
             </div>

@@ -1,5 +1,6 @@
 
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -9,9 +10,10 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-16">
         <div className="grid md:grid-cols-4 gap-8">
           <div>
-            <h3 className="font-bold text-2xl mb-4">KSDM<span className="text-ksdm-gold">LLC</span></h3>
+            <h3 className="font-bold text-2xl mb-4">KSDM<span className="text-ksdm-gold">®</span></h3>
             <p className="text-gray-300 mb-4">
-              Building exceptional global ventures across real estate, tourism, technology, and strategic investments.
+              More than clothing. KSDM crafts identity through garments and accessories 
+              that make you visible even to the naked eye.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="hover:text-ksdm-gold transition-colors">
@@ -30,32 +32,33 @@ const Footer = () => {
           </div>
           
           <div>
-            <h4 className="font-semibold text-lg mb-4">Business Verticals</h4>
+            <h4 className="font-semibold text-lg mb-4">Shop</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-300 hover:text-white">Real Estate</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white">Tourism</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white">Technology</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white">Global Investments</a></li>
+              <li><Link to="/clothing" className="text-gray-300 hover:text-white">Clothing</Link></li>
+              <li><Link to="/accessories" className="text-gray-300 hover:text-white">Accessories</Link></li>
+              <li><a href="#" className="text-gray-300 hover:text-white">New Arrivals</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white">Sale</a></li>
             </ul>
           </div>
           
           <div>
-            <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
+            <h4 className="font-semibold text-lg mb-4">About</h4>
             <ul className="space-y-2">
-              <li><a href="#about" className="text-gray-300 hover:text-white">About Us</a></li>
-              <li><a href="#portfolio" className="text-gray-300 hover:text-white">Portfolio</a></li>
-              <li><a href="#global" className="text-gray-300 hover:text-white">Global Presence</a></li>
+              <li><a href="#about" className="text-gray-300 hover:text-white">Our Story</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white">Brand Philosophy</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white">Sustainability</a></li>
               <li><a href="#contact" className="text-gray-300 hover:text-white">Contact</a></li>
             </ul>
           </div>
           
           <div>
-            <h4 className="font-semibold text-lg mb-4">Contact Information</h4>
+            <h4 className="font-semibold text-lg mb-4">Contact</h4>
             <ul className="space-y-2">
               <li className="text-gray-300">inquiry@ksdmllc.com</li>
               <li className="text-gray-300">+255 764 738 005</li>
-              <li className="text-gray-300">US: Lexington, Kentucky</li>
-              <li className="text-gray-300">TZ: Dar es Salaam, Tanzania</li>
+              <li className="text-gray-300">+255 762 771 000</li>
+              <li className="text-gray-300">US: 271 W. Short St Ste 410 #1598, Lexington, Kentucky 40507</li>
+              <li className="text-gray-300">TZ: 12 Kids Joy Mivumoni 14130, Dar es Salaam, Tanzania</li>
             </ul>
           </div>
         </div>
