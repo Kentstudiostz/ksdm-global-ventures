@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart, Menu, User } from "lucide-react";
@@ -79,13 +80,6 @@ const Navbar = () => {
               <User size={20} />
             </button>
             <div className="absolute right-0 mt-2 w-48 bg-white shadow-xl rounded-md py-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-              <Link 
-                to="/dashboard" 
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-ksdm-gold"
-              >
-                Dashboard
-              </Link>
-              <div className="border-t border-gray-100 my-1"></div>
               <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-ksdm-gold">
                 Profile
               </a>
