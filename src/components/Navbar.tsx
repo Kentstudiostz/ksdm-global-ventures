@@ -1,8 +1,8 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart, Menu, User } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useCart } from "@/contexts/CartContext";
 import {
   Sheet,
   SheetContent,
@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isMobile = useIsMobile();
+  const { itemCount } = useCart();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -42,8 +43,13 @@ const Navbar = () => {
         </div>
         
         <div className="flex items-center space-x-4">
-          <Link to="/cart" className="text-gray-700 hover:text-ksdm-gold transition-colors">
+          <Link to="/cart" className="text-gray-700 hover:text-ksdm-gold transition-colors relative">
             <ShoppingCart size={20} />
+            {itemCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-ksdm-gold text-ksdm-navy text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                {itemCount}
+              </span>
+            )}
           </Link>
           
           {isMobile ? (
