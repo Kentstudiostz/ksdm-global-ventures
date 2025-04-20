@@ -1,9 +1,10 @@
 
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
-import FeaturedProducts from "@/components/FeaturedProducts";
+import FeaturedCollection from "@/components/FeaturedCollection";
+import TrendingProducts from "@/components/TrendingProducts";
 import BrandStory from "@/components/BrandStory";
+import VideoFeature from "@/components/VideoFeature";
 import Collections from "@/components/Collections";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
@@ -14,10 +15,11 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar />
       <Hero />
+      <FeaturedCollection />
+      <VideoFeature />
+      <TrendingProducts />
       <BrandStory />
       <Collections />
-      <FeaturedProducts />
-      <About />
       <Testimonials />
       <Contact />
       <Footer />

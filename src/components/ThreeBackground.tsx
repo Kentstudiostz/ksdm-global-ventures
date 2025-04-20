@@ -1,12 +1,29 @@
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
-const ThreeBackground = () => {
+type ThreeBackgroundProps = {
+  color1?: string;
+  color2?: string;
+  particleCount?: number;
+  particleSize?: number;
+  rotationSpeed?: number;
+  density?: 'low' | 'medium' | 'high';
+};
+
+const ThreeBackground = ({
+  color1 = '#FCBF49', // gold
+  color2 = '#0077B6', // blue
+  particleCount = 1500,
+  particleSize = 0.03,
+  rotationSpeed = 0.0003,
+  density = 'medium',
+}: ThreeBackgroundProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isInitialized, setIsInitialized] = useState(false);
   
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || isInitialized) return;
     
     // Scene setup
     const scene = new THREE.Scene();
@@ -24,24 +41,32 @@ const ThreeBackground = () => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     containerRef.current.appendChild(renderer.domElement);
     
+    // Determine actual particle count based on density
+    let actualParticleCount = particleCount;
+    if (density === 'low') actualParticleCount = Math.floor(particleCount * 0.5);
+    if (density === 'high') actualParticleCount = Math.floor(particleCount * 1.5);
+    
     // Create particles
     const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 2000;
     
-    const positions = new Float32Array(particlesCount * 3);
-    const colors = new Float32Array(particlesCount * 3);
+    const positions = new Float32Array(actualParticleCount * 3);
+    const colors = new Float32Array(actualParticleCount * 3);
     
-    for (let i = 0; i < particlesCount * 3; i += 3) {
+    // Parse colors
+    const color1Obj = new THREE.Color(color1);
+    const color2Obj = new THREE.Color(color2);
+    
+    for (let i = 0; i < actualParticleCount * 3; i += 3) {
       // Position
       positions[i] = (Math.random() - 0.5) * 10;
       positions[i + 1] = (Math.random() - 0.5) * 10;
       positions[i + 2] = (Math.random() - 0.5) * 10;
       
-      // Color - gold and blue gradient
+      // Color - mix between the two colors
       const mixRatio = Math.random();
-      colors[i] = mixRatio * 0.85; // R - gold
-      colors[i + 1] = mixRatio * 0.6; // G - gold
-      colors[i + 2] = (1 - mixRatio) * 0.8; // B - blue
+      colors[i] = color1Obj.r * mixRatio + color2Obj.r * (1 - mixRatio);
+      colors[i + 1] = color1Obj.g * mixRatio + color2Obj.g * (1 - mixRatio);
+      colors[i + 2] = color1Obj.b * mixRatio + color2Obj.b * (1 - mixRatio);
     }
     
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
@@ -49,7 +74,7 @@ const ThreeBackground = () => {
     
     // Material
     const particlesMaterial = new THREE.PointsMaterial({
-      size: 0.03,
+      size: particleSize,
       sizeAttenuation: true,
       transparent: true,
       alphaMap: createCircleTexture(),
@@ -98,11 +123,12 @@ const ThreeBackground = () => {
     window.addEventListener('mousemove', handleMouseMove);
     
     // Animation loop
+    const actualRotationSpeed = rotationSpeed;
     const animate = () => {
       requestAnimationFrame(animate);
       
-      particles.rotation.x += 0.0003;
-      particles.rotation.y += 0.0005;
+      particles.rotation.x += actualRotationSpeed;
+      particles.rotation.y += actualRotationSpeed * 1.5;
       
       // Follow mouse
       particles.rotation.x += (mouse.y * 0.1 - particles.rotation.x) * 0.05;
@@ -111,10 +137,12 @@ const ThreeBackground = () => {
       renderer.render(scene, camera);
     };
     animate();
+
+    setIsInitialized(true);
     
     // Cleanup
     return () => {
-      if (containerRef.current) {
+      if (containerRef.current && containerRef.current.contains(renderer.domElement)) {
         containerRef.current.removeChild(renderer.domElement);
       }
       window.removeEventListener('resize', handleResize);
@@ -125,7 +153,7 @@ const ThreeBackground = () => {
       particlesMaterial.dispose();
       renderer.dispose();
     };
-  }, []);
+  }, [color1, color2, particleCount, particleSize, rotationSpeed, density, isInitialized]);
   
   return (
     <div 

@@ -1,63 +1,114 @@
-import { ArrowRight } from 'lucide-react';
-import { Button } from './ui/button';
-import ThreeBackground from './ThreeBackground';
-import { Link } from 'react-router-dom';
+
+import { motion } from "framer-motion";
+import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <div className="relative bg-gradient-to-r from-ksdm-navy to-blue-900 text-white min-h-screen flex items-center">
-      {/* 3D Background */}
-      <ThreeBackground />
-      
-      {/* Overlay Pattern - keeping this for additional texture */}
-      <div className="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+CjxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgZmlsbD0iI2ZmZiI+PC9yZWN0Pgo8cGF0aCBkPSJNMzYgMTBhNiA2IDAgMCAxIDEyIDBBNiA2IDAgMCAxIDYwIDEwQTYgNiAwIDAgMSA0OCAyMmE2IDYgMCAwIDEgLTEyIDBBNiA2IDAgMCAxIDI0IDEwQTYgNiAwIDAgMSAzNiAyMiIgZmlsbD0iIzAwMCI+PC9wYXRoPgo8L3N2Zz4=')]"></div>
+    <div className="relative overflow-hidden bg-gradient-to-b from-ksdm-navy to-black">
+      {/* Mobile image - shown on smaller screens */}
+      <div className="block md:hidden">
+        <div className="h-[70vh] relative">
+          <img 
+            src="https://images.unsplash.com/photo-1523139188738-65073d2917c1" 
+            alt="KSDM Fashion" 
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent"></div>
+        </div>
+      </div>
 
-      <div className="container mx-auto px-4 py-20 pt-32 md:py-24 md:pt-40 z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="animate-fade-in">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
-              <span className="block">Define Your</span>
-              <span className="text-ksdm-gold">Presence.</span>
-            </h1>
-            <p className="text-lg md:text-xl opacity-90 mb-8">
-              Not just clothing. KSDM crafts garments that amplify your awareness, 
-              identity, and taste. Stand out even to the naked eye.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                size="lg" 
-                className="bg-ksdm-gold text-ksdm-navy hover:bg-yellow-400 font-medium"
-                asChild
-              >
-                <Link to="/clothing">Shop Collection</Link>
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="bg-transparent border-white text-white hover:bg-white/10"
-                asChild
-              >
-                <Link to="/accessories">
-                  Explore Accessories <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-          <div className="hidden md:block relative animate-fade-in">
-            <div className="w-full h-96 rounded-lg overflow-hidden shadow-2xl">
-              <img 
-                src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952" 
-                alt="KSDM Fashion" 
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-ksdm-navy/70 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 p-8 text-white">
-                <p className="text-sm font-medium tracking-wider uppercase mb-2">New Collection</p>
-                <h3 className="text-2xl font-bold">Identity Series</h3>
+      {/* Desktop hero layout */}
+      <div className="hidden md:block relative h-screen max-h-[900px]">
+        <div className="absolute inset-0 z-10">
+          <div className="grid grid-cols-12 h-full">
+            <div className="col-span-6 flex items-center p-12 xl:p-24">
+              <div className="max-w-xl">
+                <motion.h1 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-5xl xl:text-7xl font-bold text-white leading-tight mb-6"
+                >
+                  <span className="block">Distinction.</span>
+                  <span className="block text-ksdm-gold">Identity.</span>
+                  <span className="block">Awareness.</span>
+                </motion.h1>
+
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="text-xl text-gray-200 mb-10 max-w-md"
+                >
+                  KSDM crafts experiences that make you visible. Not just clothing—but a statement of identity.
+                </motion.p>
+
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  className="flex flex-col sm:flex-row gap-4"
+                >
+                  <Button 
+                    size="lg" 
+                    className="bg-ksdm-gold text-ksdm-navy hover:bg-yellow-400 font-medium text-lg px-8 py-6"
+                    asChild
+                  >
+                    <Link to="/clothing">Shop Now</Link>
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="lg" 
+                    className="border-white text-white hover:bg-white/10 font-medium text-lg px-8 py-6"
+                    asChild
+                  >
+                    <Link to="/accessories">Explore</Link>
+                  </Button>
+                </motion.div>
               </div>
             </div>
-            <div className="absolute -bottom-4 -right-4 w-48 h-48 bg-ksdm-gold/20 rounded-full blur-2xl"></div>
+
+            <div className="col-span-6 relative h-full overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1588701177361-c42359b29f68" 
+                alt="KSDM Fashion" 
+                className="w-full h-full object-cover object-center scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-ksdm-navy/90 to-transparent"></div>
+            </div>
           </div>
+        </div>
+
+        {/* Background shape elements */}
+        <div className="absolute top-1/4 left-1/3 w-64 h-64 rounded-full bg-ksdm-gold/10 blur-3xl"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-ksdm-gold/5 blur-3xl"></div>
+      </div>
+
+      {/* Mobile content */}
+      <div className="md:hidden px-6 py-12 bg-ksdm-navy">
+        <h1 className="text-4xl font-bold text-white mb-4">
+          <span className="block">Distinction.</span>
+          <span className="block text-ksdm-gold">Identity.</span>
+          <span className="block">Awareness.</span>
+        </h1>
+        <p className="text-lg text-gray-200 mb-8">
+          KSDM crafts experiences that make you visible. Not just clothing—but a statement of identity.
+        </p>
+        <div className="flex flex-col gap-3">
+          <Button 
+            className="bg-ksdm-gold text-ksdm-navy hover:bg-yellow-400 w-full py-6 text-lg"
+            asChild
+          >
+            <Link to="/clothing">Shop Now</Link>
+          </Button>
+          <Button 
+            variant="outline" 
+            className="border-white text-white hover:bg-white/10 w-full py-6 text-lg"
+            asChild
+          >
+            <Link to="/accessories">Explore</Link>
+          </Button>
         </div>
       </div>
     </div>
