@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
-import { Plus, Search } from "lucide-react";
+import { Plus, Search, Trash2 } from "lucide-react";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
 import { Button } from "@/components/ui/button";
@@ -9,20 +9,99 @@ import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ProductsTable from "@/components/dashboard/ProductsTable";
 import { clothingProducts, accessoriesProducts } from "@/data/products";
+import AddEditProductModal from "@/components/dashboard/AddEditProductModal";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import { useToast } from "@/hooks/use-toast";
 
 const Products = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [products, setProducts] = useState([...clothingProducts, ...accessoriesProducts]);
+  const [isAddProductModalOpen, setIsAddProductModalOpen] = useState(false);
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+  const [currentProduct, setCurrentProduct] = useState(null);
+  const [selectedTab, setSelectedTab] = useState("all");
+  const { toast } = useToast();
   
-  const allProducts = [...clothingProducts, ...accessoriesProducts];
-  
-  // Filter products based on search query
-  const filteredProducts = searchQuery 
-    ? allProducts.filter(p => 
+  // Filter products based on search query and selected tab
+  const getFilteredProducts = () => {
+    let filteredProducts = products;
+    
+    // Filter by tab
+    if (selectedTab === "clothing") {
+      filteredProducts = filteredProducts.filter(p => 
+        ["t-shirts", "shirts", "pants", "jeans", "sweaters", "hoodies", "jackets"].includes(p.category)
+      );
+    } else if (selectedTab === "accessories") {
+      filteredProducts = filteredProducts.filter(p => 
+        ["watches", "bags", "hats", "sunglasses", "jewelry", "scarves"].includes(p.category)
+      );
+    }
+    
+    // Filter by search
+    if (searchQuery) {
+      filteredProducts = filteredProducts.filter(p => 
         p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         p.category.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    : allProducts;
+      );
+    }
     
+    return filteredProducts;
+  };
+    
+  const handleAddProduct = () => {
+    setCurrentProduct(null);
+    setIsAddProductModalOpen(true);
+  };
+  
+  const handleEditProduct = (product) => {
+    setCurrentProduct(product);
+    setIsAddProductModalOpen(true);
+  };
+  
+  const handleDeleteProduct = (product) => {
+    setCurrentProduct(product);
+    setIsDeleteDialogOpen(true);
+  };
+  
+  const confirmDeleteProduct = () => {
+    if (currentProduct) {
+      setProducts(products.filter(p => p.id !== currentProduct.id));
+      
+      toast({
+        title: "Product deleted",
+        description: `${currentProduct.name} has been deleted successfully.`,
+      });
+      
+      setCurrentProduct(null);
+      setIsDeleteDialogOpen(false);
+    }
+  };
+  
+  const saveProduct = (productData) => {
+    if (currentProduct) {
+      // Edit existing product
+      setProducts(products.map(p => 
+        p.id === currentProduct.id ? productData : p
+      ));
+    } else {
+      // Add new product
+      setProducts([productData, ...products]);
+    }
+  };
+  
+  const handleTabChange = (value) => {
+    setSelectedTab(value);
+  };
+  
   const headerActions = (
     <>
       <div className="relative w-64">
@@ -34,7 +113,7 @@ const Products = () => {
           className="pl-8"
         />
       </div>
-      <Button>
+      <Button onClick={handleAddProduct}>
         <Plus className="h-4 w-4 mr-2" />
         Add Product
       </Button>
@@ -54,46 +133,58 @@ const Products = () => {
             actions={headerActions}
           />
           <div className="p-6">
-            <Tabs defaultValue="all" className="w-full">
+            <Tabs defaultValue="all" className="w-full" value={selectedTab} onValueChange={handleTabChange}>
               <TabsList className="mb-4">
-                <TabsTrigger value="all">All Products ({allProducts.length})</TabsTrigger>
-                <TabsTrigger value="clothing">Clothing ({clothingProducts.length})</TabsTrigger>
-                <TabsTrigger value="accessories">Accessories ({accessoriesProducts.length})</TabsTrigger>
+                <TabsTrigger value="all">All Products ({products.length})</TabsTrigger>
+                <TabsTrigger value="clothing">
+                  Clothing ({products.filter(p => ["t-shirts", "shirts", "pants", "jeans", "sweaters", "hoodies", "jackets"].includes(p.category)).length})
+                </TabsTrigger>
+                <TabsTrigger value="accessories">
+                  Accessories ({products.filter(p => ["watches", "bags", "hats", "sunglasses", "jewelry", "scarves"].includes(p.category)).length})
+                </TabsTrigger>
               </TabsList>
               
-              <TabsContent value="all">
-                <ProductsTable products={filteredProducts} />
-              </TabsContent>
-              
-              <TabsContent value="clothing">
+              <TabsContent value={selectedTab}>
                 <ProductsTable 
-                  products={
-                    searchQuery 
-                      ? clothingProducts.filter(p => 
-                          p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          p.category.toLowerCase().includes(searchQuery.toLowerCase())
-                        )
-                      : clothingProducts
-                  } 
-                />
-              </TabsContent>
-              
-              <TabsContent value="accessories">
-                <ProductsTable 
-                  products={
-                    searchQuery 
-                      ? accessoriesProducts.filter(p => 
-                          p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          p.category.toLowerCase().includes(searchQuery.toLowerCase())
-                        )
-                      : accessoriesProducts
-                  } 
+                  products={getFilteredProducts()} 
+                  onEdit={handleEditProduct}
+                  onDelete={handleDeleteProduct}
                 />
               </TabsContent>
             </Tabs>
           </div>
         </SidebarInset>
       </div>
+      
+      {/* Add/Edit Product Modal */}
+      <AddEditProductModal
+        open={isAddProductModalOpen}
+        onOpenChange={setIsAddProductModalOpen}
+        product={currentProduct}
+        onSave={saveProduct}
+      />
+      
+      {/* Delete Confirmation Dialog */}
+      <AlertDialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This will permanently delete the product "{currentProduct?.name}". This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={confirmDeleteProduct}
+              className="bg-red-600 hover:bg-red-700"
+            >
+              <Trash2 className="h-4 w-4 mr-2" />
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </SidebarProvider>
   );
 };

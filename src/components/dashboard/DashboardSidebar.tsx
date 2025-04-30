@@ -1,135 +1,112 @@
 
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { 
-  Sidebar, 
-  SidebarContent, 
-  SidebarHeader, 
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupLabel,
-  SidebarGroupContent,
-  SidebarMenu,
-  SidebarMenuItem,
-  SidebarMenuButton,
-} from "@/components/ui/sidebar";
-import { 
-  Home, 
-  Package, 
-  ShoppingCart, 
+  LayoutDashboard, 
+  ShoppingBag, 
   Users, 
-  BarChart, 
-  Settings, 
-  Package as Inventory,
+  ClipboardList, 
+  BarChart3, 
+  PackageOpen, 
+  Settings,
+  Store,
+  Menu
 } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarTrigger } from "@/components/ui/sidebar";
+
+const links = [
+  {
+    title: "Dashboard",
+    href: "/dashboard",
+    icon: LayoutDashboard
+  },
+  {
+    title: "Products",
+    href: "/dashboard/products",
+    icon: ShoppingBag
+  },
+  {
+    title: "Orders",
+    href: "/dashboard/orders",
+    icon: ClipboardList
+  },
+  {
+    title: "Customers",
+    href: "/dashboard/customers",
+    icon: Users
+  },
+  {
+    title: "Analytics",
+    href: "/dashboard/analytics",
+    icon: BarChart3
+  },
+  {
+    title: "Inventory",
+    href: "/dashboard/inventory",
+    icon: PackageOpen
+  },
+  {
+    title: "Storefront",
+    href: "/dashboard/storefront",
+    icon: Store
+  },
+  {
+    title: "Settings",
+    href: "/dashboard/settings",
+    icon: Settings
+  }
+];
 
 const DashboardSidebar = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const currentPath = location.pathname;
-  
   return (
-    <Sidebar>
-      <SidebarHeader className="border-b border-border p-4">
-        <Link to="/" className="flex items-center gap-2">
-          <span className="text-xl font-bold text-ksdm-navy">KSDM</span>
-          <span className="text-xs bg-ksdm-gold text-white px-2 py-1 rounded">Admin</span>
-        </Link>
+    <Sidebar className="border-r border-gray-200 bg-white">
+      <SidebarHeader className="border-b p-4">
+        <div className="flex items-center justify-between">
+          <h2 className="text-xl font-bold text-ksdm-navy tracking-tight">
+            KSDM<span className="text-xs align-top text-ksdm-gold">®</span>
+          </h2>
+          <SidebarTrigger asChild>
+            <Button variant="ghost" size="icon">
+              <Menu className="h-5 w-5" />
+              <span className="sr-only">Toggle sidebar</span>
+            </Button>
+          </SidebarTrigger>
+        </div>
       </SidebarHeader>
       
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>General</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton 
-                  isActive={currentPath === "/dashboard"}
-                  onClick={() => navigate("/dashboard")}
-                >
-                  <Home size={18} />
-                  <span>Dashboard</span>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              
-              <SidebarMenuItem>
-                <SidebarMenuButton
-                  isActive={currentPath === "/dashboard/products"}
-                  onClick={() => navigate("/dashboard/products")}
-                >
-                  <Package size={18} />
-                  <span>Products</span>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              
-              <SidebarMenuItem>
-                <SidebarMenuButton
-                  isActive={currentPath === "/dashboard/orders"}
-                  onClick={() => navigate("/dashboard/orders")}
-                >
-                  <ShoppingCart size={18} />
-                  <span>Orders</span>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              
-              <SidebarMenuItem>
-                <SidebarMenuButton
-                  isActive={currentPath === "/dashboard/customers"}
-                  onClick={() => navigate("/dashboard/customers")}
-                >
-                  <Users size={18} />
-                  <span>Customers</span>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-        
-        <SidebarGroup>
-          <SidebarGroupLabel>Management</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton
-                  isActive={currentPath === "/dashboard/inventory"}
-                  onClick={() => navigate("/dashboard/inventory")}
-                >
-                  <Inventory size={18} />
-                  <span>Inventory</span>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              
-              <SidebarMenuItem>
-                <SidebarMenuButton
-                  isActive={currentPath === "/dashboard/analytics"}
-                  onClick={() => navigate("/dashboard/analytics")}
-                >
-                  <BarChart size={18} />
-                  <span>Analytics</span>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              
-              <SidebarMenuItem>
-                <SidebarMenuButton
-                  isActive={currentPath === "/dashboard/settings"}
-                  onClick={() => navigate("/dashboard/settings")}
-                >
-                  <Settings size={18} />
-                  <span>Settings</span>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+      <SidebarContent className="p-2">
+        <nav className="space-y-1">
+          {links.map(link => (
+            <NavLink
+              key={link.href}
+              to={link.href}
+              className={({ isActive }) => cn(
+                "flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors",
+                isActive 
+                  ? "bg-gray-100 text-ksdm-navy font-medium" 
+                  : "text-gray-600 hover:bg-gray-50 hover:text-ksdm-navy"
+              )}
+            >
+              <link.icon className="h-5 w-5" />
+              <span>{link.title}</span>
+            </NavLink>
+          ))}
+        </nav>
       </SidebarContent>
       
-      <SidebarFooter className="border-t border-border p-4">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-ksdm-navy flex items-center justify-center text-white">
-            A
+      <SidebarFooter className="border-t p-4">
+        <div className="flex items-center gap-3">
+          <div className="h-9 w-9 rounded-full bg-gray-200 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e" 
+              alt="Admin" 
+              className="h-full w-full object-cover"
+            />
           </div>
           <div>
             <p className="text-sm font-medium">Admin User</p>
-            <p className="text-xs text-muted-foreground">admin@ksdm.com</p>
+            <p className="text-xs text-gray-500">admin@ksdmllc.com</p>
           </div>
         </div>
       </SidebarFooter>

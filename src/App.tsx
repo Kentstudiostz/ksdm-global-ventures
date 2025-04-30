@@ -18,6 +18,7 @@ import DashboardCustomers from "./pages/dashboard/Customers";
 import DashboardAnalytics from "./pages/dashboard/Analytics";
 import DashboardSettings from "./pages/dashboard/Settings";
 import DashboardInventory from "./pages/dashboard/Inventory";
+import DashboardStorefront from "./pages/dashboard/Storefront";
 import Collections from "./pages/Collections";
 import Profile from "./pages/Profile";
 import OurStory from "./pages/OurStory";
@@ -53,6 +54,7 @@ const App = () => (
             <Route path="/dashboard/analytics" element={<DashboardAnalytics />} />
             <Route path="/dashboard/inventory" element={<DashboardInventory />} />
             <Route path="/dashboard/settings" element={<DashboardSettings />} />
+            <Route path="/dashboard/storefront" element={<DashboardStorefront />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

@@ -36,9 +36,11 @@ interface Product {
 
 interface ProductsTableProps {
   products: Product[];
+  onEdit?: (product: Product) => void;
+  onDelete?: (product: Product) => void;
 }
 
-const ProductsTable = ({ products }: ProductsTableProps) => {
+const ProductsTable = ({ products, onEdit, onDelete }: ProductsTableProps) => {
   return (
     <div className="bg-white rounded-md border shadow-sm">
       <Table>
@@ -78,14 +80,14 @@ const ProductsTable = ({ products }: ProductsTableProps) => {
                   {product.salePrice ? (
                     <div>
                       <span className="text-muted-foreground line-through mr-2">
-                        ₱{product.price.toFixed(2)}
+                        ${product.price.toFixed(2)}
                       </span>
                       <span className="text-red-600 font-medium">
-                        ₱{product.salePrice.toFixed(2)}
+                        ${product.salePrice.toFixed(2)}
                       </span>
                     </div>
                   ) : (
-                    <span>₱{product.price.toFixed(2)}</span>
+                    <span>${product.price.toFixed(2)}</span>
                   )}
                 </TableCell>
                 <TableCell>
@@ -121,15 +123,24 @@ const ProductsTable = ({ products }: ProductsTableProps) => {
                           View
                         </Link>
                       </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        <Edit className="mr-2 h-4 w-4" />
-                        Edit
-                      </DropdownMenuItem>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem className="text-red-600">
-                        <Trash2 className="mr-2 h-4 w-4" />
-                        Delete
-                      </DropdownMenuItem>
+                      {onEdit && (
+                        <DropdownMenuItem onClick={() => onEdit(product)}>
+                          <Edit className="mr-2 h-4 w-4" />
+                          Edit
+                        </DropdownMenuItem>
+                      )}
+                      {onDelete && (
+                        <>
+                          <DropdownMenuSeparator />
+                          <DropdownMenuItem 
+                            onClick={() => onDelete(product)}
+                            className="text-red-600"
+                          >
+                            <Trash2 className="mr-2 h-4 w-4" />
+                            Delete
+                          </DropdownMenuItem>
+                        </>
+                      )}
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </TableCell>
