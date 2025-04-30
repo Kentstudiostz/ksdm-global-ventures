@@ -66,11 +66,9 @@ const DashboardSidebar = () => {
           <h2 className="text-xl font-bold text-ksdm-navy tracking-tight">
             KSDM<span className="text-xs align-top text-ksdm-gold">®</span>
           </h2>
-          <SidebarTrigger asChild>
-            <Button variant="ghost" size="icon">
-              <Menu className="h-5 w-5" />
-              <span className="sr-only">Toggle sidebar</span>
-            </Button>
+          <SidebarTrigger>
+            <Menu className="h-5 w-5" />
+            <span className="sr-only">Toggle sidebar</span>
           </SidebarTrigger>
         </div>
       </SidebarHeader>
