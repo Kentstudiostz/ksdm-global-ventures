@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -17,6 +18,12 @@ import DashboardCustomers from "./pages/dashboard/Customers";
 import DashboardAnalytics from "./pages/dashboard/Analytics";
 import DashboardSettings from "./pages/dashboard/Settings";
 import DashboardInventory from "./pages/dashboard/Inventory";
+import Collections from "./pages/Collections";
+import Profile from "./pages/Profile";
+import OurStory from "./pages/OurStory";
+import BrandPhilosophy from "./pages/BrandPhilosophy";
+import Sustainability from "./pages/Sustainability";
+import ContactPage from "./pages/ContactPage";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +40,12 @@ const App = () => (
             <Route path="/accessories" element={<AccessoriesStore />} />
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/collections" element={<Collections />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/our-story" element={<OurStory />} />
+            <Route path="/brand-philosophy" element={<BrandPhilosophy />} />
+            <Route path="/sustainability" element={<Sustainability />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/dashboard/products" element={<DashboardProducts />} />
             <Route path="/dashboard/orders" element={<DashboardOrders />} />

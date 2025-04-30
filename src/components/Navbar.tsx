@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart, Menu, User } from "lucide-react";
@@ -82,16 +83,16 @@ const Navbar = () => {
           ) : null}
           
           <div className="ml-2 relative group">
-            <button className="text-ksdm-navy hover:text-ksdm-gold transition-colors">
+            <Link to="/profile" className="text-ksdm-navy hover:text-ksdm-gold transition-colors">
               <User size={20} />
-            </button>
+            </Link>
             <div className="absolute right-0 mt-2 w-48 bg-white shadow-xl rounded-md py-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-              <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-ksdm-gold">
+              <Link to="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-ksdm-gold">
                 Profile
-              </a>
-              <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-ksdm-gold">
+              </Link>
+              <Link to="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-ksdm-gold">
                 Settings
-              </a>
+              </Link>
               <div className="border-t border-gray-100 my-1"></div>
               <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-ksdm-gold">
                 Logout

@@ -36,6 +36,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li><Link to="/clothing" className="text-gray-300 hover:text-white">Clothing</Link></li>
               <li><Link to="/accessories" className="text-gray-300 hover:text-white">Accessories</Link></li>
+              <li><Link to="/collections" className="text-gray-300 hover:text-white">Collections</Link></li>
               <li><a href="#" className="text-gray-300 hover:text-white">New Arrivals</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white">Sale</a></li>
             </ul>
@@ -44,10 +45,10 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-lg mb-4">About</h4>
             <ul className="space-y-2">
-              <li><a href="#about" className="text-gray-300 hover:text-white">Our Story</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white">Brand Philosophy</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white">Sustainability</a></li>
-              <li><a href="#contact" className="text-gray-300 hover:text-white">Contact</a></li>
+              <li><Link to="/our-story" className="text-gray-300 hover:text-white">Our Story</Link></li>
+              <li><Link to="/brand-philosophy" className="text-gray-300 hover:text-white">Brand Philosophy</Link></li>
+              <li><Link to="/sustainability" className="text-gray-300 hover:text-white">Sustainability</Link></li>
+              <li><Link to="/contact" className="text-gray-300 hover:text-white">Contact</Link></li>
             </ul>
           </div>
           
